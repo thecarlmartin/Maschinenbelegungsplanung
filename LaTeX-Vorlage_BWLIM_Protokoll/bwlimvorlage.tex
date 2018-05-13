@@ -1,0 +1,455 @@
+% tudbwlim-Vorlage für wissenschaftliche Arbeiten (Stand: 21.03.2018)
+%
+%
+% Beispieldatei zur Benutzung der IM-Vorlage. Für diese Vorlage wird das Paket "tudscr" von Falk Hanisch (http://wwwpub.zih.tu-dresden.de/~fahan/tudscr/) in der Version >= 2.05m benötigt. Das Paket scrbase sollte in der Version >= 3.18 installiert sein. Darüberhinaus wird biber und biblatex in der Version 2.10 bzw. 3.10 benötigt. Sind diese Pakete nicht in den passenden Versionen vorhanden, dann können sie über den TeXLive Manager oder den Kommandozeilenaufruf "tlmgr update <Paketname>" aktualisiert werden. Generell ist die TeX Live 2017 oder neuer zu empfehlen.
+% MiKTeX Anwender müssen ggf. einen Perl Interpreter installieren. In TeX Live Distributionen wird dies mitgeliefert.
+
+%############################################################################################################
+%################ Empfohlene TeXstudio-Einstellungen für diese Vorlage:######################################
+%############################################################################################################
+%
+% Beachten Sie dazu die Hinweise in der mitgelieferten Dokumentation (Kurzanleitung.pdf) im Ordner "doc".
+%
+% Optionen -> TeXstudio konfigurieren -> Erzeugen:
+%
+% - Erstellen und Anzeigen: "Erstellen und Anzeigen (mit ausgewählten Standardprogrammen)" oder "Übersetzung nach PDF"
+% - Standardkompiler: PdfLaTeX
+% - Standardbetrachter: PDF Betrachter
+% - PDF Betrachter: Interner PDF Betrachter (eingebettet)
+% - Standard Bibliographieprogramm: Biber
+
+%#############################################################################################################
+
+\RequirePackage{hyphsubst} % Zur verbesserten Worttrennung
+% Bitte an die Sprache anpassen die an \documentclass übergeben wird
+	\HyphSubstLet{ngerman}{ngerman-x-latest}
+	%\HyphSubstLet{english}{usenglishmax}
+
+\documentclass[final, english, ngerman, a4paper, 12pt, % Bei Änderung der Sprache 2 x kompilieren!
+numbers=noenddot,
+cd=true,
+cdfont=false,cdfont=nohead,cdfont=nodin,
+cdmath=false,
+cdhead=false,
+cdfoot=true,
+cdcover=monochrome,
+cdgeometry=symmetric,
+declaration=heading,
+declaration=notoc,
+abstract=heading,
+]{tudscrreprt}
+
+\usepackage{settings/tudbwlimPackages}
+\usepackage{settings/tudbwlimStyle}
+
+%################ Hilfreiche Pakete laden #######################
+% Folgende auskommentierte Pakete sind als Vorschläge zu verstehen. Für Funktionsweise und Anwendungsfälle wird auf das Benutzerhandbuch "tudscr.pdf" (http://mirrors.ctan.org/macros/latex/contrib/tudscr/doc/tudscr.pdf) oder auf die entsprechende CTAN Dokumentation verwiesen.
+%\usepackage{listings}
+%\lstset{%
+%	inputencoding=utf8,extendedchars=true,
+%	literate=%
+%	{ä}{{\"a}}1 {ö}{{\"o}}1 {ü}{{\"u}}1
+%	{Ä}{{\"A}}1 {Ö}{{\"O}}1 {Ü}{{\"U}}1
+%	{~}{{\textasciitilde}}1 {ß}{{\ss}}1
+%	}
+
+%\usepackage{calc}
+%\usepackage{ziffer}
+
+\usepackage{scrhack}
+
+%\usepackage{pstricks,pst-all} % soll pstricks verwendet werden, bitte den Anweisungen ab Seite 51 im Anwenderleitfaden "treatise.pdf" (http://mirrors.ctan.org/macros/latex/contrib/tudscr/doc/tutorials/treatise.pdf).
+%\usepackage{auto-pst-pdf} % sollte auskommentiert sein, wenn pstricks _nicht_ verwendet wird
+
+\usepackage{tikz,pgfplots,pgfgantt}
+	\pgfplotsset{compat=newest}
+\usepackage[chapter]{algorithm} % Falls das Paket floatrow geladen wird, muss dieses Paket danach geladen werden.
+	\iflanguage{english}{\floatname{algorithm}{Algorithm}}{\floatname{algorithm}{Algorithmus}} % Algorithm-Umgebung an die verwendete Sprache anpassen
+
+
+%################ Notwendige Pakete laden #######################
+
+\usepackage[bibencoding=auto,citestyle=authoryear-ibid,bibstyle=authoryear,natbib=true,]{biblatex}% Vergessen Sie nicht in den Optionen das Bibliographieprogramm auf "biber" umzustellen! Um die Vorlage mit BibTeX nutzen zu können, muss die Option "backend=bibtex" übergeben werden. Es ist jedoch biber zu empfehlen, beachten Sie dazu die Hinweise der biblatex-Paketdokumentation im Abschnitt 3.15 "Using the fallback BibtTeX backend".
+	\usepackage{settings/BiblatexSetup}
+%\AfterPackage*{biblatex}%
+%{
+%	\RequirePackage[breaklinks=true, colorlinks=false, linktoc=section, linkcolor=blue, citecolor=black, hidelinks]{hyperref}
+%		% Da hyperref allerhand Veränderungen an vielen Standardbefehlen vornimmt, sollte dieses als letztes in der Präambel eingebunden werden. Nur Pakete, bei denen in der Dokumentation explizit darauf hingewiesen wird, dass diese nach hyperref zu laden sind, sollten auch danach folgen.
+%		\hypersetup{pdfprintscaling=None} % gleiches Verhalten, auch ohne hyperref, liefert: \pdfcatalog{/ViewerPreferences<</PrintScaling/None>>}
+%}
+%\AfterPackage*{hyperref}
+%{
+%	\RequirePackage[automake,acronym,symbols,nomain,translate=babel,]{glossaries}
+%		\usepackage{settings/GlossariesSetup}
+%}
+
+%################ Eigene Einstellungen/Befehle #######################
+
+
+%################ Sonstige Einstellungen/Befehle #####################
+\onehalfspacing
+
+
+%################ Abkürzungen #######################
+%\makeglossaries
+%\glsenableentrycount % aktiviert \cgls, \cglspl, \cGls, \cGlspl, siehe https://tex.stackexchange.com/questions/98494/glossaries-dont-print-single-occurences/230664#230664
+%
+%% Abkürzungen, die im Abkürzungsverzeichnis auftauchen und automatisch durch das glossaries-Paket sortiert werden
+%\newacronym{crm}{CRM}{Customer Relationship Management}
+%\newacronym{scm}{SCM}{Supply Chain Management}
+%\newacronym[longplural={klein- und mittelständige Unternehmen},user1={klein- und mittelständigen Unternehmens}, description=Klein- und mittelständiges Unternehmen]{kmu}{KMU}{klein- und mittelständiges Unternehmen} % description tag setzt das Erscheinungsbild des Textes im Abkürzungsverzeichnis
+%\newacronym[description=Meine Welt]{mw}{mW}{meine Welt}
+%
+%% Abkürzungen, die nicht im Abkürzungsverzeichnis aufgeführt werden
+%\newabbreviation{zB}{z.\,B.}{zum Beispiel}
+%
+%% Symbole die im Symbolverzeichniss erscheinen sollen
+%% Mit "F5" kompilieren oder "Tools -> Befehle -> makeglossaries" (F9) starten, um das Symbolverzeichnis zu aktualisieren
+%% \newsymb{<sort by>}{<name>}{<symbol>}{<unit>}
+%%
+%\newsymb{E}{Erwartungswert}{\mathbb{E}\left(\cdot\right)}{}
+%\newsymb{P}{Wahrscheinlichkeitsmaß}{\mathbb{P}\left(\cdot\right)}{}
+%\newsymb{V}{Varianz}{\mathbb{V}\left(\cdot\right)}{}
+%\newsymb{X}{Zufallsvariable}{X}{}
+%%
+%% Oder so verwenden und im Fließtext dann mit $\ExpValue$ arbeiten:
+%%\newcommand{\ExpValue}{\mathbb{E}\left(\cdot\right)}
+%%\newsymb{E}{Erwartungswert}{\ExpValue}{}
+%%
+%\glsaddall[types={symbols}] % Alle Symbole werden dem Symbolverzeichnis hinzugefügt
+
+%################ Bibliographie laden #######################
+\addbibresource{./settings/Quellen.bib} % Pfad/Name der .bib-Datei
+
+%################ Ende Präambel #######################
+\pagenumbering{Roman}
+
+
+
+
+
+
+
+
+
+\begin{document}
+%################ Aufruf Deckblatt #######################
+% mögliche Optionen, für weitere Informationen, siehe S. 23 des Benutzerhandbuchs des tudscr-Paket (http://mirrors.ctan.org/macros/latex/contrib/tudscr/doc/tudscr.pdf):
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\thesis{\diplomathesisname}		% Diplomarbeit/Diploma-Thesis
+%\graduation[Dipl.-Kffr.]{Diplom-Kauffrau} % [Dipl.-Kfm.]{Diplom-Kaufmann}
+%
+%\thesis{\masterthesisname}			% Master-Arbeit/Master Thesis
+%\graduation[M.Sc.]{Master of Science}
+%
+%\thesis{\bachelorthesisname}		% Bachelor-Arbeit/Bachelor Thesis
+%\graduation[B.Sc.]{Bachelor of Science}
+%
+%\subject{\studentthesisname}		% Studienarbeit/Student Thesis
+%\subject{\studentresearchname}		% Großer Beleg/Student Research Project
+%\subject{\projectpapername}		% Projektarbeit/Project Paper
+%\subject{\seminarpapername}		% Seminararbeit/Seminar Paper
+%\subject{\termpapername}		% Hausarbeit/Term Paper
+%\subject{\researchname}			% Forschungsbericht/Research Report
+\subject{\logname}					% Protokoll/Log
+%\subject{\reportname}				% Bericht/Report
+%\subject{\internshipname}			% Praktikumsbericht/Internship Report
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Ein Beispieltitel}
+%\subtitle{Optionaler Unter-/Zweittitel}
+%\subtitle{Im Rahmen des Seminars Aktuelle Forschungsfragen des Operations Research}
+%\subtitle{within the seminar Advanced Approaches in Industrial Management}
+%\subtitle{Im Rahmen des WPA Mentorenprogramms}
+\subtitle{Seminar Maschinenbelegungsplanung}
+%\subtitle{Im Rahmen des Seminars Instrumente und Anwendungen des Industriellen Managements}
+%\subtitle{Im Rahmen des Seminars Aktuelle Forschungsfragen des Industriellen Management}
+%\subtitle{Im Rahmen des Forschungsseminars Industrielles Management}
+
+% Autor(en)
+\author{%
+	Carl Martin
+	\matriculationnumber{4054734}
+	\dateofbirth{02.02.1996}
+	\placeofbirth{Schlema}
+	\course{Wirtschaftsingenieurwesen, 7. FS}
+%	\authormore{%
+%	}%
+%	\and%
+%	Vorname2 Nachname2
+%	\matriculationnumber{7654321}
+%	\dateofbirth{02.01.2016}
+%	\placeofbirth{Berlin}
+%	\course{Betriebswirtschaftslehre, 7. FS}
+}
+
+\date[]{\today}
+
+\supervisor{Prof. Dr. Udo Buscher}
+\professor{Prof. Dr. Udo Buscher}
+
+%\makecover
+
+\setcounter{page}{1}
+
+%%% IM
+\headlogo{./settings/IM-Logo}
+\chair{Lehrstuhl für BWL, insbes. Industrielles Management, Prof. Dr. Udo Buscher}
+
+%%% CBM
+%\headlogo{./settings/CBM-Logo}
+%\chair{Lehrstuhl für BWL, insbes. Industrielles Management -- Zentrum Car Business Management}
+
+\maketitle[cdfont=false]
+
+%################ Danksagung, Sperrvermerk und Abstract (wenn nötig) ######################
+%\begin{abstract}
+%	Inhalt...
+%\end{abstract}
+
+%%% Danksagung
+%\danke{Danksagung}{Text}
+
+%%% Sperrvermerk
+%\blocking[company=Musterfirma]
+
+%####################### Verzeichnisse ################
+%\microtypesetup{protrusion=false}
+%
+%
+%
+%% Inhaltsverzeichnis
+%\tableofcontents
+%
+%% Abbildungsverzeichnis (falls nichts benötigt, einfach als Kommentar setzen)
+%\listoffigures
+%\addcontentsline{toc}{chapter}{\listfigurename}
+%
+%% Tabellenverzeichnis (falls nichts benötigt, einfach als Kommentar setzen)
+%\listoftables
+%\addcontentsline{toc}{chapter}{\listtablename}
+%
+%% Algorithmenverzeichnis (falls nichts benötigt, einfach als Kommentar setzen)
+%\listofalgorithms
+%\addcontentsline{toc}{chapter}{\listalgorithmname}
+%
+%
+%
+%\microtypesetup{protrusion=true}
+%
+%
+%
+%% Abkürzungsverzeichnis (falls nichts benötigt, einfach als Blockkommentar setzen)
+%\printacronyms[style=bwlimsuper]
+%\addcontentsline{toc}{chapter}{\acronymname}
+%
+%% Symbolverzeichnis (falls nichts benötigt, einfach als Blockkommentar setzen)
+%\printsymbols[style=symblong, title=\listsymbolname]
+%\addcontentsline{toc}{chapter}{\listsymbolname}
+
+
+%############### Einstellungen für Fließtext setzen ####################
+\clearpage
+\setcounter{page}{1}\pagenumbering{arabic}
+\setcounter{chapter}{1}
+
+
+
+
+
+
+
+
+
+%####################### Fließtext ####################
+
+\section*{Problemstellung und Motivation}
+
+Previous eras of large-scale manufacturing have been characterised by progressive centralisation of operations, dating back to the time of the Industrial Revolution and the emergence of the factory system from the previous artisan-based craft production. Charles Babbage, in On the Economy of Machinery and Manufactures (Babbage 1835 Babbage, C. 1835. On the Economy of Machinery and Manufactures. 4th ed. London: Charles Knight.
+[Google Scholar]
+), expounded on the economy of labour that was facilitated by machine-based production. The technical developments of his era were accompanied by the emergence of the factory system, and the advantages in terms of productivity that came with standardised tasks with firms seeking production economy-of-scale cost optimisation. Over the last three decades, globalisation trends have further transformed the industrial landscape with individual international manufacturing production sites serving regional and global markets. Factories therefore could be efficient, but this centralised paradigm was also characterised by long unresponsive supply chains with manufacturing far from the point of consumption, and often associated with inefficient use of scarce resources.
+
+In this paper, we consider recent breakthroughs in production and infrastructure technologies that have enabled smaller (and micro-scale) manufacture much closer to the end user, referred to as distributed manufacturing (DM). From a material sourcing perspective, DM operations can benefit from more distributed natural capital/material sources. From a production perspective, emerging technologies as they mature may provide improved production process control that enables repeatable, dependable production at multiple locations and at smaller scale. DM is further empowered by modern infrastructural information and communication technologies (ICT) developments, which enable a step change in connectivity to support coordination, governance and control, and crucially enable demand and supply to be managed more real-time.
+
+Bei der Maschinenbelegungsplanung im klassischen Job Shop wird angenommen, dass es eine einzige
+Produktionsstätte mit \(m\) Maschinen gibt. Das Problem besteht darin
+\(n\) jobs mit jeweils eigenen Prozessrouten so einzutakten, dass eine
+Zielfunktion minimiert wird. Meist wird die Fertigungsdauer, als die
+maximale Zeit zur Fertigstellung aller Jobs, verwendet. Es werden
+folgende Annahmen getroffen:
+
+\begin{itemize}
+	\item
+	Maschinen \& Jobs sind kontinuierlich verfügbar
+	\item
+	Rüstzeit können ignoriert werden oder sind in den Prozesszeiten
+	integriert
+	\item
+	Ein Job kann nur auf einer Maschine gleichzeitig bearbeitet werden
+	\item
+	Eine Maschine kann nur einen Job gleichzeitig bearbeiten
+\end{itemize}
+
+Durch Globalisierung und einen dadurch entstandenen Kostendruck wandelt
+sich das Paradigma eines zentralisierten Job-Shops. Es werden heutzutage
+oft mehrere, in Niedriglohnländern verteilte job shops errichtet.
+Dadurch können Kosten gesenkt, Flexibilität erhöht und eine bessere
+Kunden- \& Lieferantennähe aufgebaut werden.
+
+Jedoch wird im Distributed Jobs Shop (DJS) bestehend aus \(f\)
+Produktionsstätten mit jeweils \(m\) Maschinen die Planung komplexer. Es
+müssen zwei Entscheidungen getroffen werden:
+
+\begin{enumerate}
+	\def\labelenumi{\arabic{enumi}.}
+	\item
+	Verteilung der Jobs auf die Produktionsstätten
+	\item
+	Einplanung der Jobs auf die Maschinen
+\end{enumerate}
+
+Dabei werden im DJS-Problem folgende zusätzliche Annahmen getroffen:
+
+\begin{itemize}
+	\item
+	Jobs können nicht mehreren Facilities bearbeitet werden
+	\item
+	Produktionsstätten haben jeweils einen identischen Maschinenpark
+\end{itemize}
+
+Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text\footnote{Fußnotentext.} Text Text Text Text Text Text Text Text Tabelle~\ref{tab:1}.%
+
+
+Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text.\footcite[Vgl.][33]{HinzH1:2009}
+
+\begin{figure}[h]
+	\centering
+		\begin{tikzpicture}%[scale=0.975]
+		\begin{axis}[
+		xmin=-0.5, xmax=5,
+		ymin=-0.5, ymax=5,
+		xtick={1,...,4},
+		ytick={1,...,4},
+		axis y line=center,
+		axis x line=middle,
+		ylabel={$y$},
+		xlabel={$x$},
+		xlabel style={below right},
+		ylabel style={above left},
+		]
+		
+		\node (A) at (axis cs:2,1) {};
+		\node[right] at (A) {$A$};
+		\draw[fill] (A) circle [radius=1.75pt];
+		
+		\end{axis}
+		\end{tikzpicture}
+		\caption{Abbildungsunterschrift}
+\end{figure}
+
+Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text.\footcite[Vgl.][35]{HinzH1:2009}
+
+
+	\begin{figure}[h]
+	\begin{ganttchart}[vgrid, bar height=0.8, x unit = 0.6 cm, bar top shift=.1, title height=0.8, y unit title= 0.7 cm, y unit chart = 0.7 cm,]  %Definitionen zur Skalierung der einzelnen Achsen
+		{1}{24}  % Definition des min./max. Wertes der Zeitachse
+		\gantttitlelist{1,...,24}{1} \\    %Zeitachse, von..bis, Abstand zwischen einzelnen Werten
+		\gantttitle{\textbf{Ausgangsmodell}}{24}\\   %Überschrift im Chart - nicht notwendig
+		\ganttbar{$S_{3}M_2$}{10}{12}     %Erstellung eines Balkens mit Beschriftung (an y-Achse), von..bis auf Zeitachse
+		\ganttbar[inline]{1}{10}{12}	% inline: Beschriftung wird auf Balken eingefügt statt y-Achse
+		\ganttbar[inline]{4}{13}{14}
+		\ganttbar[inline,bar/.append style={fill=black!15}]{5}{21}{23}   % Anpassung der Farbe eines Balkens
+		\ganttbar[inline,bar/.append style={fill=black!50}]{6}{16}{18}\\   %\\ erzeugt neue Zeile, d.h. neue Maschine
+		\ganttbar{$S_{3}M_1$}{10}{11}
+		\ganttbar[inline]{2}{10}{11}
+		\ganttbar[inline]{3}{19}{22} \ganttnewline[black]   % horizontale Trennlinie
+		\ganttbar{$S_{2}M_2$}{5}{9}
+		\ganttbar[inline]{1}{5}{9}
+		\ganttbar[inline]{3}{15}{17}
+		\ganttbar[inline,bar/.append style={fill=black!15}]{5}{18}{20}	
+		\ganttbar[inline,bar/.append style={fill=black!50}]{6}{10}{14}\\	
+		\ganttbar{$S_{2}M_1$}{3}{7}
+		\ganttbar[inline]{2}{3}{7}
+		\ganttbar[inline]{4}{8}{12}\ganttnewline[black]
+		\ganttbar{$S_{1}M_2$}{1}{2}
+		\ganttbar[inline]{1}{3}{4}
+		\ganttbar[inline]{2}{1}{2}
+		\ganttbar[inline]{3}{8}{9}\\		
+		\ganttbar{$S_{1}M_1$}{6}{7}
+		\ganttbar[inline]{4}{6}{7}
+		\ganttbar[inline,bar/.append style={fill=black!15}]{5}{13}{15}
+		\ganttbar[inline,bar/.append style={fill=black!50}]{6}{4}{5}\\			
+	\end{ganttchart}
+	\caption{Vorlage für Gantt-Chart I}\label{gantt1}
+\end{figure}
+\begin{figure}[h]
+	\begin{ganttchart}[vgrid={*2{draw=none}, dotted}, bar height=0.8, x unit = 0.07 cm, bar top shift=.1, title height=0.8, y unit title= 0.7 cm, y unit chart = 0.7 cm,]{0}{199}   %neu skalierte Zeitachse: von 0 bis 199 mit Abstand zwischen zwei ZE auf 0.07 cm, 
+		\gantttitlelist{25,50,75,100,125,150,175,200}{25} \\
+		%\gantttitle{\textbf{Ausgangsmodell}}{24}\\
+		\ganttbar{M1}{105}{190}
+		\ganttbar[inline]{5-6}{105}{193}
+		\\
+		\ganttbar{M2}{0}{2}
+		\ganttbar[inline]{1-2}{148}{188}
+		\ganttbar[inline]{1-4}{74}{148}
+		\ganttbar[inline]{1-5}{0}{18}
+		\ganttbar[inline]{3-5}{18}{74}
+		\\
+		\ganttbar{M3}{0}{2}
+		\ganttbar[inline]{2-1}{0}{68}
+		\ganttbar[inline]{2-2}{161}{176}
+		\ganttbar[inline]{4-2}{68}{81}
+		\ganttbar[inline]{4-5}{81}{161}
+		\\
+		\ganttbar{M4}{0}{2}
+		\ganttbar[inline]{2-4}{68}{155}
+		\ganttbar[inline]{3-4}{168}{182}
+		\ganttbar[inline]{4-4}{182}{193}
+		\ganttbar[inline]{5-4}{0}{64}
+		\\
+		\ganttbar{M5}{0}{2}
+		\ganttbar[inline]{1-3}{188}{193}
+		\ganttbar[inline]{3-1}{74}{148}
+		\ganttbar[inline]{3-3}{0}{18}
+		\ganttbar[inline]{4-3}{18}{58}
+		
+	\end{ganttchart}
+	\caption{Vorlage für Gantt-Chart II}\label{gantt2}
+\end{figure}		
+
+\section*{Zweiter Abschnitt}
+\subsection*{Erster  Unterabschnitt des zweiten Abschnitts}
+Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text. 
+\begin{table}[t]
+	\centering
+	\begin{tabular}{ccc}
+		\toprule
+		A & B & C \\
+		\midrule
+		1 & 2 & 3  \\
+		4 & 5 & 6 \\
+		\bottomrule
+	\end{tabular}
+	\caption{Erste Tabelle}\label{tab:1}
+\end{table}
+
+Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text.
+
+\subsection*{Zweiter Unterabschnitt des zweiten Abschnitts}
+
+Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text.
+
+
+
+
+%############################# Anhang #################################
+
+\clearpage
+
+%####################### Literaturverzeichnis #########################
+\addcontentsline{toc}{chapter}{\bibliography}
+\printbibliography
+
+
+\end{document}

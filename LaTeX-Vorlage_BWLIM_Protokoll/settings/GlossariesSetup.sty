@@ -1,0 +1,108 @@
+% Can be used with the option "makeindex" or "automake" instead of "xindy". Here, again, a reference to the guideline of Falk Hanisch (https://github.com/tud-cd/tudscr/releases -> tudscr_v2.04d.zip -> .\doc\latex\tudscr\tutorials\treatise.pdf), p. 12 -- 22 and the CTAN documentaiton of glossaries.
+
+\setupglossaries{nogroupskip,nopostdot,nonumberlist,ucmark=false,nohypertypes={acronym,symbols}}
+
+% Definition von Abkürzungen die nicht im Inhaltsverzeichnis erscheinen sollen
+\newignoredglossary{abbreviation}
+\newcommand*\newabbreviation[4][]{%
+	\newacronym[type=abbreviation,#1]{#2}{\mbox{#3\xspace}}{#4}%
+}%
+
+\glsaddkey{unit}{\glsentrytext{\glslabel}}{\glsentryunit}{\GLsentryunit}{\glsunit}{\Glsunit}{\GLSunit}
+
+\newcommand*{\newsymb}[5][]{%
+\newglossaryentry{#2}{%
+	type=symbols,%
+	name={},%
+	description={#3},%
+	symbol={\ensuremath{#4}},%
+	unit={\si{#5}},%
+	sort={#2},%
+	#1%
+}%
+}
+
+% Custom glossary styles
+\newglossarystyle{bwlimsuper}{%
+	\renewenvironment{theglossary}%
+	{\tablehead{}\tabletail{}%
+		\begin{supertabular}{@{}lp{\glsdescwidth}p{\glspagelistwidth}@{}}}%
+		{\end{supertabular}}%
+	\renewcommand*{\glossaryheader}{}%
+	\renewcommand*{\glsgroupheading}[1]{}%
+	\renewcommand{\glossentry}[2]{%
+		\glsentryitem{##1}\glstarget{##1}{\glossentryname{##1}} &
+		\glossentrydesc{##1} & ##2\tabularnewline
+	}%
+	\renewcommand{\subglossentry}[3]{%
+		&
+		\glssubentryitem{##2}%
+		\glstarget{##2}{\strut}\glossentrydesc{##2} &
+		##3\tabularnewline
+	}%
+	\ifglsnogroupskip
+	\renewcommand*{\glsgroupskip}{}%
+	\else
+	\renewcommand*{\glsgroupskip}{& & \tabularnewline}%
+	\fi
+}
+
+\newglossarystyle{symbunitlong}{%
+	\setglossarystyle{long3col}% base this style on the list style
+	\renewenvironment{theglossary}{% Change the table type --> 3 columns
+		\tablehead{}\tabletail{}\begin{longtable}{ccll}}%
+		{\end{longtable}
+	}%
+	%
+	\renewcommand*{\glossaryheader}{%  Change the table header
+		\toprule
+		\bfseries Formelzeichen & \bfseries Einheit &
+		\bfseries Bezeichnung & \bfseries Seite(n)
+		\tabularnewline\midrule\endhead%
+		\bottomrule\endfoot%
+	}
+	\renewcommand*{\glossentry}[2]{%  Change the displayed items
+		\glstarget{##1}{\glossentrysymbol{##1}} %
+		& \glsunit{##1}
+		& \glossentrydesc{##1}% Description
+		& ##2\tabularnewline%
+	}%
+}
+
+\newglossarystyle{symblong}{%
+	\setglossarystyle{long3col}% base this style on the list style
+	\renewenvironment{theglossary}{% Change the table type --> 3 columns
+		\setlength\LTleft{0pt}\tablehead{}\tabletail{}
+		%			\setlength\LTright{0pt}
+		\begin{longtable}{@{}lll@{}}}%
+		{\end{longtable}
+	}%
+	%
+	\renewcommand*{\glossaryheader}{%  Change the table header
+	}
+	\renewcommand*{\glossentry}[2]{%  Change the displayed items
+		\glstarget{##1}{\glossentrysymbol{##1}} %
+		& \glossentrydesc{##1}% Description
+		& ##2\tabularnewline%##2\tabularnewline%
+	}%
+}
+
+
+% Sprachabhängige Bezeichner
+
+\addto\captionsenglish
+{%
+	\def\acronymname{List of Abbreviations}
+	%\renewcommand{\acronymname}{List of Abbreviations}
+}
+\addto\captionsgerman
+{%
+	\def\acronymname{Abk{\"u}rzungsverzeichnis}
+	%\renewcommand{\acronymname}{Abk{\"u}rzungsverzeichnis}
+}
+
+\addto\captionsngerman
+{%
+	\def\acronymname{Abk{\"u}rzungsverzeichnis}
+	%\renewcommand{\acronymname}{Abk{\"u}rzungsverzeichnis}
+}

@@ -1,0 +1,108 @@
+\ExecuteBibliographyOptions{ibidtracker=constrict,dashed=false,bibwarn=true,sortlocale=auto,arxiv=false,isbn=true,url=false,doi=false,eprint=false,%
+	maxcitenames=3,maxbibnames=100,uniquename=false,uniquelist=false,giveninits=true,%
+	% authortitle-dw options
+	%namefont=smallcaps,firstnamefont=smallcaps,nopublisher=false,idembib=false,edbyidem=false,addyear=true,journalnumber=afteryear,series=afteryear,safeinputenc=true
+}
+
+\setlength{\bibitemsep}{\baselineskip}
+
+\AtEveryBibitem{\clearfield{issn}}
+
+%\DeclareDelimFormat{footcitenametitledelim}{\addcolon\space}
+\renewcommand*{\labelnamepunct}{\addcolon\space} %\DeclareDelimFormat{nametitledelim}{\addcolon\space}
+\renewcommand*{\multinamedelim}{\thinspace\slash\thinspace}
+\renewcommand*{\finalnamedelim}{\thinspace\slash\thinspace}
+\renewcommand*{\mkbibnamefamily}[1]{\textsc{#1}}
+%\renewcommand*{\mkbibnamegiven}[1]{\textsc{#1}}
+\renewcommand{\nameyeardelim}{\addspace}
+
+% authortitle-dw options
+%\renewcommand*{\bibmultinamedelim}{\space\slash\space}
+%\renewcommand*{\bibfinalnamedelim}{\space\slash\space}
+%\renewcommand*{\bibrevsdnamedelim}{}
+%\renewcommand*{\jourvolstring}{\space Vol.\space}
+
+
+\DeclareFieldFormat*{title}{#1\isdot} %[article,book,inbook,incollection,inproceedings,misc,patent,report,thesis,unpublished]
+\DeclareFieldFormat*{citetitle}{\mkbibemph{#1}} % [article,book,inbook,incollection,inproceedings,misc,patent,techreport,thesis,unpublished]
+\DeclareFieldFormat[article]{journaltitle}{\mkbibemph{#1},}
+\DeclareFieldFormat[article]{volume}{\bibstring{jourvol}\addnbspace #1}
+\DeclareFieldFormat[article]{number}{\bibstring{number}\addnbspace #1}
+% authortitle-dw options
+%%%\DeclareFieldFormat[article]{journaltitle}{\mkbibemph{#1},}
+%%%\DeclareFieldFormat[inbook,incollection,inproceedings]{booktitle}{\mkbibemph{#1}}
+%%%\DeclareFieldFormat[masterthesis,misc,article,inproceedings,techreport,phdthesis,mastersthesis,thesis,report,inbook,incollection]{title}{#1.}
+%%%\AtEveryBibitem{\clearlist{language}}
+
+\DeclareNameAlias{sortname}{last-first}
+
+
+%%\DeclareDelimFormat[cbx@textcite]{nameyeardelim}{\addspace}
+%%\DeclareDelimFormat[cbx@textcite]{nonameyeardelim}{\addspace}
+
+
+
+\newbibmacro*{customfootcite}
+{\global\boolfalse{cbx:loccit}%
+	\iffieldundef{shorthand}%
+	{\ifthenelse{\ifciteibid\AND\NOT\iffirstonpage}
+		{\usebibmacro{cite:ibid}}
+		{\ifthenelse{\ifnameundef{labelname}\OR\iffieldundef{labelyear}}
+			{\usebibmacro{cite:label}%
+				\setunit{\addspace}}
+			{\printnames{labelname}%
+				\setunit{\nameyeardelim}}%
+			\iffieldundef{labelyear}
+			{}
+			{\iffieldundef{shorttitle}%
+				{\printtext[parens]{\usebibmacro{cite:labeldate+extradate}}\addcolon\addspace\printtext{\printfield[emph]{title}}}%
+				{\printtext[parens]{\usebibmacro{cite:labeldate+extradate}}\addcolon\addspace\printtext{\printfield[emph]{shorttitle}}}%
+	}}}%
+	{\usebibmacro{cite:shorthand}}%
+}
+
+\DeclareCiteCommand{\footcite}[\mkbibfootnote]
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+	\usebibmacro{customfootcite}
+}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+
+
+% https://tex.stackexchange.com/questions/97376/missing-vol-and-no-in-biblatex-biber
+\renewbibmacro*{volume+number+eid}{%
+	\printfield{volume}%
+	\setunit{\addcomma\space}%<---- was \setunit*{\adddot}%
+	\printfield{number}%
+	\setunit{\addcomma\space}%
+	\printfield{eid}}
+
+\renewbibmacro*{journal+issuetitle}{%
+	\usebibmacro{journal}%
+	\setunit*{\addcomma\space}% was: \setunit*{\addspace}
+	\iffieldundef{series}
+	{}
+	{\newunit
+		\printfield{series}%
+		\setunit{\addcomma\space}}% was: \setunit{\addspace}
+	\usebibmacro{volume+number+eid}%
+	\setunit{\addspace}%
+	\usebibmacro{issue+date}%
+	\setunit{\addcolon\space}%
+	\usebibmacro{issue}%
+	\newunit}
+
+
+\DefineBibliographyStrings{english}{
+	andothers = {{et\,al\adddot}}, bibliography = {Bibliography}, mathesis = {master's thesis}, phdthesis = {doctoral thesis}, techreport = {technical report}, resreport = {research report}, edition = {edition}, volume = {volume}
+}
+
+\DefineBibliographyStrings{ngerman}{
+	andothers = {{et\,al\adddot}}, bibliography = {Literaturverzeichnis}, mathesis = {Diplomarbeit}, phdthesis = {Dissertation}, techreport = {Technischer Bericht}, resreport = {Forschungsbericht}, edition = {Auflage}, volume = {Band}, jourvol = {Vol.},
+}
+
+\DefineBibliographyStrings{german}{
+	andothers = {{et\,al\adddot}}, bibliography = {Literaturverzeichnis}, mathesis = {Diplomarbeit}, phdthesis = {Dissertation}, techreport = {Technischer Bericht}, resreport = {Forschungsbericht}, edition = {Auflage}, volume = {Band}, jourvol = {Vol.},
+}
