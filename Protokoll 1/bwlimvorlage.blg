@@ -1,0 +1,17 @@
+[0] Config.pm:302> INFO - This is Biber 2.11
+[0] Config.pm:305> INFO - Logfile is 'bwlimvorlage.blg'
+[51] biber-darwin:313> INFO - === Sun May 20, 2018, 12:04:17
+[77] Biber.pm:371> INFO - Reading 'bwlimvorlage.bcf'
+[170] Biber.pm:857> INFO - Found 4 citekeys in bib section 0
+[185] Biber.pm:3976> INFO - Processing section 0
+[197] Biber.pm:4136> INFO - Looking for bibtex format file './settings/Quellen.bib' for section 0
+[199] bibtex.pm:1500> INFO - LaTeX decoding ...
+[216] bibtex.pm:1316> INFO - Found BibTeX data source './settings/Quellen.bib'
+[228] Utils.pm:193> WARN - I didn't find a database entry for 'HinzH1:2009' (section 0)
+[241] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'variable = shifted' with 'variable = non-ignorable'
+[241] UCollate.pm:68> INFO - Overriding locale 'de-DE' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[241] Biber.pm:3804> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'de-DE'
+[241] Biber.pm:3810> INFO - No sort tailoring available for locale 'de-DE'
+[251] bbl.pm:617> INFO - Writing 'bwlimvorlage.bbl' with encoding 'UTF-8'
+[253] bbl.pm:720> INFO - Output to bwlimvorlage.bbl
+[253] Biber.pm:110> INFO - WARNINGS: 1

@@ -1,0 +1,128 @@
+\RequirePackage[cdmath=false,cdfont=false]{fix-tudscrfonts}
+\makeatletter
+\def\input@path{{./settings/}}
+\makeatother
+
+\documentclass
+[
+german,
+nosectionnum,
+cdmath=false, cdfont=false, % Serifen Schriften für Matheumgebung
+]{tudbeamer} % ,handout,draft
+
+\usepackage{selinput}\SelectInputMappings{adieresis={ä},germandbls={ß}}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\usepackage{enumitem}
+\usepackage{varwidth}
+
+\usepackage[backend=biber,bibencoding=auto,citestyle=authoryear-ibid,bibstyle=authoryear,natbib=true,]{biblatex}
+	\usepackage{settings/BiblatexSetup}
+
+
+\usepackage[default,scale=0.95]{opensans}
+
+%################ Bibliographie laden #######################
+\addbibresource{./settings/Quellen.bib} % Pfad/Name der .bib-Datei
+
+\begin{document}
+	
+\sffamily % Serifenlose Schriften für die Folien
+
+\einrichtung{Fakultät Wirtschaftswissenschaften} % Faculty of Business and Economics
+\institut{Lehrstuhl für BWL, insbes. Industrielles Management, \mbox{Prof. Dr. Udo Buscher}}% Chair of Business Management especially Industrial Management
+
+\title[Kurztitel für Fußzeile]{Titel der Präsentation}
+\subtitle{Optionaler Untertitel}
+
+\author{Vorname Nachname}
+\datecity{Dresden, \today}
+
+\maketitle
+	
+	
+	
+% Gliederung am Beginn jeder Section
+\AtBeginSection[]
+{	
+	{
+	\setbeamertemplate{headline}%
+	{%
+		\vskip6.15mm\color{cdgray}
+		\setlength{\arrayrulewidth}{0.1pt}
+	}
+	
+	\setbeamertemplate{footline}{}%
+	\setbeamerfont{section in toc}{size=\small}
+	\setbeamerfont{subsection in toc}{size=\scriptsize}
+		
+	\begin{frame}{Gliederung}
+	
+	\renewcommand{\baselinestretch}{1.9}
+	\tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/shaded/hide,subsubsectionstyle=show/show/shaded/hide]
+	\addtocounter{framenumber}{-1}
+	\end{frame}
+	}
+}
+	
+	
+% Beginn Dokument
+	
+	
+	
+\section{Erster Abschnitt}
+\begin{frame}[t]{Test}
+	Inhalt
+\end{frame}
+
+
+
+\section{Zweiter Abschnitt}
+\begin{frame}{Test}
+	Inhalt
+	\begin{figure}
+		\includegraphics[width=0.1\textwidth]{settings/IM-Logo}
+	\end{figure}
+\end{frame}
+
+
+
+\section{Dritter Abschnitt}
+\begin{frame}{Test}
+	\begin{align*}
+		a^2 + b^2 = c^2
+	\end{align*}
+\end{frame}
+
+
+
+\section{Vierter Abschnitt}
+\begin{frame}{Test}
+	\begin{itemize}[label=\EnumerationSquare]
+		\item Test 1
+		\item Test 2
+		\item Test 3
+		\begin{itemize}[label=\EnumerationDash]
+			\item Test 1
+		\end{itemize}
+	\end{itemize}
+\end{frame}
+
+
+\appendix
+\begin{ClosingFrame}{}
+	\Large\bfseries
+	\begin{center}
+		Vielen Dank für Ihre Aufmerksamkeit!
+	\end{center} 
+\end{ClosingFrame}
+
+
+\section*{Backup}
+\begin{BackupFrame}{Backupfolie}
+	content...
+\end{BackupFrame}
+
+	
+\end{document}

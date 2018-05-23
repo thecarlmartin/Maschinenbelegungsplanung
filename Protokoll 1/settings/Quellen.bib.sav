@@ -1,0 +1,99 @@
+% Encoding: UTF-8
+%% This BibTeX bibliography file was created using BibDesk.
+%% https://bibdesk.sourceforge.io/
+
+%% Created for Carl Martin at 2018-05-19 09:19:15 +0200 
+
+
+%% Saved with string encoding Unicode (UTF-8) 
+
+
+
+@book{pinedo-scheduling,
+	Author = {Pinedo, Michael L},
+	Date-Added = {2018-05-12 08:30:13 +0000},
+	Date-Modified = {2018-05-12 08:30:19 +0000},
+	Publisher = {Springer},
+	Title = {Scheduling: theory, algorithms, and systems},
+	Year = {2016}}
+
+@incollection{babbage-economy,
+	Author = {Babbage, Charles},
+	Booktitle = {Readings In The Economics Of The Division Of Labor: The Classical Tradition},
+	Date-Added = {2018-05-12 07:44:15 +0000},
+	Date-Modified = {2018-05-12 07:44:25 +0000},
+	Pages = {131--148},
+	Publisher = {World Scientific},
+	Title = {From The Economy of Machinery and Manufactures},
+	Year = {2005}}
+
+@article{djs-challenges,
+	Author = {Jagjit Singh Srai and Mukesh Kumar and Gary Graham and Wendy Phillips and James Tooze and Simon Ford and Paul Beecher and Baldev Raj and Mike Gregory and Manoj Kumar Tiwari and B. Ravi and Andy Neely and Ravi Shankar and Fiona Charnley and Ashutosh Tiwari},
+	Date-Added = {2018-05-12 07:42:40 +0000},
+	Date-Modified = {2018-05-12 07:42:56 +0000},
+	Doi = {10.1080/00207543.2016.1192302},
+	Eprint = {https://doi.org/10.1080/00207543.2016.1192302},
+	Journal = {International Journal of Production Research},
+	Number = {23},
+	Pages = {6917-6935},
+	Publisher = {Taylor & Francis},
+	Title = {Distributed manufacturing: scope, challenges and opportunities},
+	Url = {https://doi.org/10.1080/00207543.2016.1192302},
+	Volume = {54},
+	Year = {2016},
+	Bdsk-Url-1 = {https://doi.org/10.1080/00207543.2016.1192302}}
+
+@article{genetic-algos,
+	Author = {H.Z. Jia and J.Y.H. Fuh and A.Y.C. Nee and Y.F. Zhang},
+	Date-Added = {2018-05-12 07:00:20 +0000},
+	Date-Modified = {2018-05-12 07:00:35 +0000},
+	Doi = {https://doi.org/10.1016/j.cie.2007.06.024},
+	Issn = {0360-8352},
+	Journal = {Computers & Industrial Engineering},
+	Keywords = {Genetic algorithm, Gantt chart, Production scheduling},
+	Note = {Selected Papers from The 27th. International Conference on Computers & Industrial Engineering - Part 2},
+	Number = {2},
+	Pages = {313 - 320},
+	Title = {Integration of genetic algorithm and Gantt chart for job shop scheduling in distributed manufacturing systems},
+	Url = {http://www.sciencedirect.com/science/article/pii/S0360835207001155},
+	Volume = {53},
+	Year = {2007},
+	Bdsk-Url-1 = {http://www.sciencedirect.com/science/article/pii/S0360835207001155},
+	Bdsk-Url-2 = {https://doi.org/10.1016/j.cie.2007.06.024}}
+
+@article{semi-schedules,
+	Abstract = {This paper presents a brief review on job shop scheduling techniques in semiconductor manufacturing. The manufacturing environment in a semiconductor industry is considered a highly complex job shop, involving multiple types of work centers, large and changing varieties of products, sequence-dependent setup times, reentrant process flow, etc., in a dynamic scheduling environment. Due to the stubborn nature of the deterministic job shop scheduling problem itself, many of the solutions proposed are of hybrid construction cutting across the traditional disciplines. The problem has been investigated from a variety of perspectives resulting in several analytical techniques combining generic as well as problem-specific strategies. In this paper, we seek to provide a brief overview of the problem, the techniques used and the researchers involved in solving this problem. },
+	Author = {Gupta, Amit Kumar and Sivakumar, Appa Iyer},
+	Date-Added = {2018-05-12 06:59:41 +0000},
+	Date-Modified = {2018-05-12 07:00:54 +0000},
+	Day = {01},
+	Doi = {10.1007/s00170-004-2296-z},
+	Issn = {1433-3015},
+	Journal = {The International Journal of Advanced Manufacturing Technology},
+	Month = {Feb},
+	Number = {11},
+	Pages = {1163--1169},
+	Title = {Job shop scheduling techniques in semiconductor manufacturing},
+	Url = {https://doi.org/10.1007/s00170-004-2296-z},
+	Volume = {27},
+	Year = {2006},
+	Bdsk-Url-1 = {https://doi.org/10.1007/s00170-004-2296-z}}
+
+@article{djs-modeling,
+	Author = {B. Naderi and A. Azab},
+	Date-Added = {2018-05-12 06:59:04 +0000},
+	Date-Modified = {2018-05-12 07:01:04 +0000},
+	Doi = {https://doi.org/10.1016/j.eswa.2014.06.023},
+	Issn = {0957-4174},
+	Journal = {Expert Systems with Applications},
+	Keywords = {Distributed job shop scheduling, Mathematical modeling, Greedy heuristics},
+	Number = {17},
+	Pages = {7754 - 7763},
+	Title = {Modeling and heuristics for scheduling of distributed job shops},
+	Url = {http://www.sciencedirect.com/science/article/pii/S0957417414003649},
+	Volume = {41},
+	Year = {2014},
+	Bdsk-Url-1 = {http://www.sciencedirect.com/science/article/pii/S0957417414003649},
+	Bdsk-Url-2 = {https://doi.org/10.1016/j.eswa.2014.06.023}}
+
+@Comment{jabref-meta: databaseType:bibtex;}

@@ -1,0 +1,337 @@
+% tudbwlim-Vorlage zur Erstellung eines Posters in der Version 2.1
+%
+%
+% Beispieldatei zur Benutzung der IM-Vorlage. Für diese Vorlage wird das Paket "tudscr" von Falk Hanisch (http://wwwpub.zih.tu-dresden.de/~fahan/tudscr/) in der Version >= 2.05m benötigt. Ist es nicht vorhanden, kann es über den TeXLive Manager oder den Kommandozeilenaufruf "tlmgr update tudscr" aktualisiert werden.
+% Das Paket scrbase sollte in der Version >= 3.18 installiert sein.
+
+% Weitere Informationen über das Corporate Design der TU Dresden und die bereitgestellten Vorlagen finden sich hier: http://tu-dresden.de/service/publizieren/cd/4_latex, sowie Details zur Verwendung der Vorlage (in Kommandozeile "texdox tudscr" oder http://ftp.uni-erlangen.de/ctan/macros/latex/contrib/tudscr/doc/tudscr.pdf), als auch nützliche Tipps zur Verwendung von \LaTeX und zum Schreiben von wissenschaftlichen Arbeiten allgemein (https://github.com/tud-cd/tudscr/releases -> tudscr_v2.xx.zip -> .\doc\latex\tudscr\tutorials\treatise.pdf). Ebenfalls bereitgestellt von Falk Hanisch.
+
+
+
+\RequirePackage{hyphsubst} % Zur verbesserten Worttrennung
+% Bitte an die Sprache anpassen die an \documentclass übergeben wird
+	\HyphSubstLet{ngerman}{ngerman-x-latest}
+	%\HyphSubstLet{english}{usenglishmax}
+\RequirePackage{fix-cm}
+
+\documentclass[english, ngerman, a0paper, fontsize=30pt,
+cdfont=false,cdfont=nodin,cdmath=false,
+cdgeometry=custom,
+bleedmargin=3mm,
+backgroundcolor=white,
+]{./settings/tudscrposter}
+
+\geometry{bottom=12cm, textwidth=0.85\paperwidth}
+
+
+\usepackage{settings/tudbwlimPackages}
+\usepackage{settings/tudbwlimStyle}
+
+\usepackage{tikz,pgfplots}
+	\pgfplotsset{compat=newest}
+\usepackage{multicol}
+\usepackage{tcolorbox}
+	\tcbuselibrary{breakable}
+	\tcbuselibrary{skins}
+	% Hinweis  ##########
+	%####################
+	% Das Paket "tcolorbox" bietet viele Möglichkeiten Inhaltsboxen zu definieren und das Layout anzupassen (siehe die raster bzw. poster library).
+	%\tcbuselibrary{raster} % tcolorbox.pdf pages 276 -- 293
+	% Poster layout library: p. 395 -- 407
+	%\tcbuselibrary{poster} % poster tutorial: http://ctan.sharelatex.com/tex-archive/macros/latex/contrib/tcolorbox/tcolorbox-tutorial-poster.pdf
+	%####################
+	% Eine andere Möglichkeit die hier nicht aufgezeigt ist, ist mit tikz oder pstrickts das Layout/die Position der Textinhalte manuell zu setzen. Diese Möglichkeit ist hier nicht aufgezeigt.
+\usepackage{varwidth}
+\usepackage{blindtext}
+
+\usepackage{wrapfig}
+
+
+\usepackage[backend=biber,bibencoding=auto,citestyle=authoryear-ibid,bibstyle=authoryear,natbib=true,]{biblatex}
+	\usepackage{settings/BiblatexSetup}
+\usepackage[automake=false,acronym,symbols,nomain,translate=babel,]{glossaries}
+	\usepackage{settings/GlossariesSetup}
+
+\usepackage[default]{opensans}
+
+%################ Eigene Einstellungen/Befehle #######################
+
+
+%################ Sonstige Einstellungen/Befehle #####################
+
+
+
+%################ Abkürzungen #######################
+%\makeglossaries
+\glsenableentrycount % aktiviert \cgls, \cglspl, \cGls, \cGlspl, siehe https://tex.stackexchange.com/questions/98494/glossaries-dont-print-single-occurences/230664#230664
+
+\renewcaptionname{ngerman}{\contactname}{Impressum}
+\renewcaptionname{english}{\contactname}{Impressum}
+
+%\RequirePackage[breaklinks=true, colorlinks=false, hidelinks]{hyperref} % frenchlinks=true,
+%	\hypersetup{pdfprintscaling=None} % gleiches Verhalten, auch ohne hyperref, liefert: \pdfcatalog{/ViewerPreferences<</PrintScaling/None>>}
+
+
+
+%%% Definition von Inhaltsboxen, vgl. die tcolorbox Dokumentation. Bei der Gestaltung des Posters bitte auf eine Art von Boxen beschränken!
+\newtcolorbox[]{bwlimbox}[2][]{%
+colback=white, colframe=cdblue!20, coltitle=cddarkblue, %colbacktitle=cdblue!25, 
+drop small lifted shadow,
+%title filled, 
+boxrule=0pt,
+%titlerule=10mm,titlerule style=red,
+arc=1mm, sharp corners=south,
+fonttitle=\usefontofkomafont{section}, 
+title=\ifdin{\MakeTextUppercase{#2}}{\MakeTextUppercase{#2}}, #1
+}
+
+\newtcolorbox[]{testbox}[2][]{%
+	colback=cdblue!05, colframe=cdblue!20, coltitle=cddarkblue,
+	drop small lifted shadow,
+	enhanced, attach boxed title to top center={yshift=-\tcboxedtitleheight/3,yshifttext=-6mm},boxed title size=copy,boxed title style={colframe=cdblue!20,colback=cdblue!20},
+	fonttitle=\usefontofkomafont{section}, 
+	title=\ifdin{\MakeTextUppercase{#2}}{\MakeTextUppercase{#2}}, #1
+}
+
+\newtcolorbox[]{testboxtwo}[2][]{%
+	enhanced,before skip=2mm,after skip=2mm,
+	colback=cdblue!05,colbacktitle=cdblue!40,colframe=cdblue!20,coltitle=cddarkblue,boxrule=0.2mm,
+	attach boxed title to top center={xshift=1cm,yshift*=1mm-\tcboxedtitleheight},
+	varwidth boxed title*=-3cm,
+	drop small lifted shadow,
+	boxed title style={frame code={
+			\path[fill=tcbcol@back!30!black]
+			([yshift=-1mm,xshift=-1mm]frame.north west)
+			arc[start angle=0,end angle=180,radius=1mm]
+			([yshift=-1mm,xshift=1mm]frame.north east)
+			arc[start angle=180,end angle=0,radius=1mm];
+			\path[fill=cdblue!20] %left color=tcbcol@back!60!black,right color=tcbcol@back!60!black,middle color=tcbcol@back!60!black
+			([xshift=-2mm]frame.north west) -- ([xshift=2mm]frame.north east)
+			[rounded corners=1mm]-- ([xshift=1mm,yshift=-1mm]frame.north east)
+			-- (frame.south east) -- (frame.south west)
+			-- ([xshift=-1mm,yshift=-1mm]frame.north west)
+			[sharp corners]-- cycle;
+		},interior engine=empty,
+	},
+	fonttitle=\usefontofkomafont{section},
+	title=\ifdin{\MakeTextUppercase{#2}}{\MakeTextUppercase{#2}}, #1
+}
+
+\newtcolorbox
+{mybox}[2][]{enhanced,skin=enhancedlast jigsaw,
+	attach boxed title to top left={xshift=-4mm,yshift=-0.5mm},
+	varwidth boxed title=1.2\linewidth,
+	colback=cdblue!05, colbacktitle=cdblue!20, colframe=cdblue!20, coltitle=cddarkblue,
+	boxed title style={empty,arc=0pt,outer arc=0pt,boxrule=0pt},
+	drop small lifted shadow,
+	underlay boxed title={
+		\fill[cdblue!20] (title.north west) -- (title.north east)
+		-- +(
+		\tcboxedtitleheight
+		-1mm,-
+		\tcboxedtitleheight
+		+1mm)
+		-- ([xshift=4mm,yshift=0.5mm]frame.north east) -- +(0mm,-1mm)
+		-- (title.south west) -- cycle;
+		\fill[cdblue!45!white!50!black] ([yshift=-0.5mm]frame.north west)
+		-- +(-0.4,0) -- +(0,-0.3) -- cycle;
+		\fill[cdblue!45!white!50!black] ([yshift=-0.5mm]frame.north east)
+		-- +(0,-0.3) -- +(0.4,0) -- cycle;  },
+	fonttitle=\usefontofkomafont{section},
+	title=\ifdin{\MakeTextUppercase{#2}}{\MakeTextUppercase{#2}},#1}
+
+% Definition der Fußzeile, siehe hierzu die tudscr-Doku auf Seiten 32, 58--62:
+\makeatletter
+\footcontent[\small]%
+{
+	\begin{minipage}{0.09\paperwidth} % Schafft Platz für das Lehrstuhllogo in der Fußzeile.
+		\hfill
+	\end{minipage}
+	\begin{minipage}[t][][t]{0.21\paperwidth}
+		{\bfseries\contactname}\newline
+		Technische Universität Dresden\newline
+		\@faculty\newline
+		Lehrstuhl für Betriebswirtschaftslehre,\newline
+		inbes. Industrielles Management\newline
+		Prof. Dr. Udo Buscher
+	\end{minipage}
+	\begin{minipage}[t][][t]{0.19\paperwidth}
+		{\bfseries Diplomarbeit von}\newline
+		Vorname Nachname\newline
+		vorname.nachname@mailservice.de\newline
+		{\bfseries\contactpersonname}\newline
+		Max Mustermann\newline
+		max.mustermann@tu-dresden.de
+	\end{minipage}
+	\begin{minipage}[t][][t]{0.19\paperwidth}
+		% hier ist Platz für weitere Betreuer, einen Industriepartner, Förderverweis etc...
+	\end{minipage}
+}
+\makeatother
+
+
+
+
+
+
+
+
+
+\begin{document}
+\microtypesetup{protrusion=true}
+\spacing{1.0}
+\sffamily
+
+\title{\MakeTextUppercase{Ein schöner Titel muss hier her -- und wenn er lang ist, dann auch über zwei Zeilen und linksbündig}}
+\subtitle{\MakeTextUppercase{Optionaler Unter-/Zweittitel}}
+
+%%% IM
+\footlogo{./settings/IM-Logo}
+\chair{Lehrstuhl für BWL, insbes. Industrielles Management, Prof. Dr. Udo Buscher}
+
+%%% CBM
+%\footlogo{./settings/CBM-Logo}
+%\chair{Lehrstuhl für BWL, insbes. Industrielles Management -- Zentrum Car Business Management}
+
+\maketitle
+
+%################ Abstract (wenn nötig) ######################
+
+% Optionaler Abstract.
+%\begin{abstract}%[columns=2]
+%	\noindent
+%%	\begin{bwlimbox}[notitle]{}
+%		\blindtext
+%%	\end{bwlimbox}
+%\end{abstract}
+%\bigskip
+
+
+
+\noindent
+\begin{minipage}{0.48\textwidth}
+	\begin{mybox}[equal height group=A]{Thema der Arbeit}
+		% equal height group enables that two boxes have the same height.
+		% [tcolorbox.pdf] p. 61: Note that you have to compile twice to see changes in the height groups.
+		\blindtext
+	\end{mybox}
+\end{minipage}
+\hfill
+\begin{minipage}{0.48\textwidth}
+	\begin{mybox}[equal height group=A]{Motivation}
+		\blindtext[2]
+	\end{mybox}
+\end{minipage}
+
+
+
+\bigskip
+
+
+
+\begin{testboxtwo}{Grundlagen}
+	\begin{multicols}{2}%[\section*{Test}]
+		\blindmathtrue
+		\blindtext
+		\begin{center}
+			\begin{tikzpicture}%[scale=0.975]
+			\begin{axis}[
+			xmin=-0.5, xmax=5,
+			ymin=-0.5, ymax=5,
+			xtick={1,...,4},
+			ytick={1,...,4},
+			axis y line=center,
+			axis x line=middle,
+			ylabel={$y$},
+			xlabel={$x$},
+			xlabel style={below right},
+			ylabel style={above left},
+			]
+			
+			\node (A) at (axis cs:2,1) {};
+			\node[right] at (A) {$A$};
+			\draw[fill] (A) circle [radius=1.75pt];
+			
+			\end{axis}
+			\end{tikzpicture}
+			\begin{tikzpicture}%[scale=0.975]
+			\begin{axis}[
+			xmin=-0.5, xmax=5,
+			ymin=-0.5, ymax=5,
+			xtick={1,...,4},
+			ytick={1,...,4},
+			axis y line=center,
+			axis x line=middle,
+			ylabel={$y$},
+			xlabel={$x$},
+			xlabel style={below right},
+			ylabel style={above left},
+			]
+			
+			\node (B) at (axis cs:2,1) {};
+			\node[right] at (B) {$B$};
+			\draw[fill] (B) circle [radius=1.75pt];
+			
+			\end{axis}
+			\end{tikzpicture}
+			\begin{tikzpicture}%[scale=0.975]
+			\begin{axis}[
+			xmin=-0.5, xmax=5,
+			ymin=-0.5, ymax=5,
+			xtick={1,...,4},
+			ytick={1,...,4},
+			axis y line=center,
+			axis x line=middle,
+			ylabel={$y$},
+			xlabel={$x$},
+			xlabel style={below right},
+			ylabel style={above left},
+			]
+			
+			\node (C) at (axis cs:2,1) {};
+			\node[right] at (C) {$C$};
+			\draw[fill] (C) circle [radius=1.75pt];
+			
+			\end{axis}
+			\end{tikzpicture}
+		\end{center}
+	\end{multicols}
+\end{testboxtwo}
+
+
+
+\bigskip
+
+
+
+%\begin{testbox}{Beispieltitel}
+%	\blindtext[2]
+%\end{testbox}
+
+
+\begin{testbox}{Rechenergebnisse}
+	\begin{wrapfigure}[10]{l}[0pt]{0mm} % Vergleiche floatrow-Doku Seite 82.
+		% Notes. 1) For figure, contents in e.g. in wrapfigure environment you set width in mandatory argument. If you’ll write 0mm as {<width of figure>} argument, the wrapfig package will calculate a natural width of float contents.
+		\tcbincludegraphics[colback=cdblue!05, colframe=cdblue!05, boxrule=0pt, width=0.4\textwidth]{TUD-black}
+	\end{wrapfigure}
+	\blindtext[2]
+\end{testbox}
+
+
+
+\bigskip
+
+
+
+\noindent
+\begin{minipage}{0.25\textwidth}
+	\begin{mybox}{Symbole}
+		\begin{tabular}{@{}ll@{\quad}ll@{}}
+			$a$ & Ausprägung 1 & $b$ & Ausprägung 2\\
+			$c$ & Ausprägung 3 & &
+		\end{tabular}
+	\end{mybox}
+\end{minipage}
+
+
+\end{document}
