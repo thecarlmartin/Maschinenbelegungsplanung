@@ -5,11 +5,11 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Jobs und Operationsfolge f\IeC {\"u}r das Anwendungsbeispiel\relax }}{7}{table.caption.10}
-\contentsline {table}{\numberline {4.2}{\ignorespaces Ermitteltes Arbeitspensum und Rank\relax }}{8}{table.caption.12}
-\contentsline {table}{\numberline {4.3}{\ignorespaces Arbeitstabelle zur Aufteilung von Jobs auf Produktionsst\IeC {\"a}tten\relax }}{9}{table.caption.13}
-\contentsline {table}{\numberline {4.4}{\ignorespaces Ergebnis nach der ersten Iteration\relax }}{10}{table.caption.15}
-\contentsline {table}{\numberline {4.5}{\ignorespaces Einplanung der Jobs nach SPT\relax }}{10}{table.caption.16}
-\contentsline {table}{\numberline {4.6}{\ignorespaces Operationen in der zu betrachtenden Operationsfolge\relax }}{14}{table.caption.21}
-\contentsline {table}{\numberline {4.7}{\ignorespaces Operationen in der zu betrachtenden Operationsfolge\relax }}{14}{table.caption.22}
+\contentsline {table}{\numberline {4.1}{\ignorespaces Jobs und Operationsfolge f\IeC {\"u}r das Anwendungsbeispiel\relax }}{7}{table.caption.9}
+\contentsline {table}{\numberline {4.2}{\ignorespaces Ermitteltes Arbeitspensum und Rank\relax }}{8}{table.caption.11}
+\contentsline {table}{\numberline {4.3}{\ignorespaces Arbeitstabelle zur Aufteilung von Jobs auf Produktionsst\IeC {\"a}tten\relax }}{9}{table.caption.12}
+\contentsline {table}{\numberline {4.4}{\ignorespaces Einplanung von Jobs nach der SPT Regel - Erster Iterationsschritt\relax }}{10}{table.caption.14}
+\contentsline {table}{\numberline {4.5}{\ignorespaces Einplanung von Jobs nach der SPT Regel - Ergebnis\relax }}{10}{table.caption.15}
+\contentsline {table}{\numberline {4.6}{\ignorespaces Aus der Operationsfolge extrahierte Informationen\relax }}{14}{table.caption.21}
+\contentsline {table}{\numberline {4.7}{\ignorespaces Einplanung der Jobs nach der ermittelten Operationsfolge\relax }}{14}{table.caption.22}
 \addvspace {10\p@ }

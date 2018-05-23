@@ -229,8 +229,8 @@ abstract=heading,
 \addcontentsline{toc}{chapter}{\listtablename}
 
 % Algorithmenverzeichnis (falls nichts benötigt, einfach als Kommentar setzen)
-\listofalgorithms
-\addcontentsline{toc}{chapter}{\listalgorithmname}
+%\listofalgorithms
+%\addcontentsline{toc}{chapter}{\listalgorithmname}
 
 
 
@@ -263,9 +263,10 @@ abstract=heading,
 
 \chapter{Problemstellung und Motivation}
 
-Frühere Epochen der Großserienfertigung waren durch eine fortschreitende Zentralisierung der Betriebe gekennzeichnet, die auf die Zeit der industriellen Revolution und die Entstehung des Fabriksystems aus der früheren Handwerksproduktion zurückging.\footcite[Vgl.][S. 135f]{babbage-economy} Die technischen Entwicklungen dieser Zeit wurden begleitet durch die Entstehung von Fabriksystemen und den damit verbundenen Produktivitäts- und Kostenvorteilen. Zwar können Fabriken effizient produzieren, jedoch ist dieses zentralisierte Paradigma auch durch langwierige, oft langsam reagierende Lieferketten geprägt. In den letzten drei Jahrzehnten hat Globalisierung die Industrielandschaft mit mehreren internationalen Produktionsstandorten, die regionale und globale Märkte bedienen, stark verändert. \\
+Frühere Epochen der Großserienfertigung waren durch eine fortschreitende Zentralisierung der Betriebe gekennzeichnet, die auf die Zeit der industriellen Revolution und die Entstehung des Fabriksystems aus der früheren Handwerksproduktion zurückgeht. Die technischen Entwicklungen dieser Zeit wurden begleitet durch die Entstehung von Fabriksystemen und den damit verbundenen Produktivitäts- und Kostenvorteilen. Zwar können Fabriken effizient produzieren, jedoch ist dieses zentralisierte Paradigma auch durch langwierige, oft langsam reagierende Lieferketten geprägt. In den letzten drei Jahrzehnten hat Globalisierung die Industrielandschaft mit mehreren internationalen Produktionsstandorten, die regionale und globale Märkte bedienen, stark verändert.\footcite[Vgl.][S. 135f]{babbage-economy} \\
 
-Bei der zentralisierten Werkstattfertigung - also im klassischen Job Shop - wird angenommen, dass es eine einzige Produktionsstätte mit $m$ Maschinen gibt. Das Problem besteht darin $n$ jobs mit jeweils eigenen Prozessrouten so einzutakten, dass eine Zielfunktion minimiert wird. Meist wird hierfür die Fertigungsdauer, als die benötigte Zeit zur Fertigstellung aller Jobs, verwendet. Es werden bei den Lösungsverfahren meist folgende Annahmen getroffen:
+\noindent
+Bei der zentralisierten Werkstattfertigung - also im klassischen Job Shop - wird angenommen, dass es eine einzige Produktionsstätte mit $m$ Maschinen gibt. Das Problem besteht darin $n$ jobs mit jeweils eigenen Prozessrouten so einzutakten, dass eine Zielfunktion minimiert wird. Meist wird hierfür die Fertigungsdauer, also die benötigte Zeit zur Fertigstellung aller Jobs, verwendet. Es werden bei den Lösungsverfahren meist folgende Annahmen getroffen:
 
 \begin{itemize}
 	\item Maschinen \& Jobs sind kontinuierlich verfügbar
@@ -274,34 +275,40 @@ Bei der zentralisierten Werkstattfertigung - also im klassischen Job Shop - wird
 	\item Eine Maschine kann nur einen Job gleichzeitig bearbeiten
 \end{itemize}
 
-Der Trend zu mehreren Fabriken, die die gleichen Güter für unterschiedliche Märkte produzieren, verändert auch die Anforderungen und Problemstellungen der Maschinenbelegungsplanung. Im Distributed Jobs Shop, bestehend aus $f$ Produktionsstätten mit jeweils $m$ Maschinen, wird die Planung komplexer - es müssen zwei Entscheidungen getroffen werden:
+\noindent
+Der Trend zu mehreren Fabriken, die die gleichen Güter für unterschiedliche Märkte produzieren, verändert auch die Anforderungen und Problemstellungen der Maschinenbelegungsplanung. Im \cgls{djs}, bestehend aus $f$ Produktionsstätten mit jeweils $m$ Maschinen, wird die Planung komplexer - es müssen zwei Entscheidungen getroffen werden:
 
 \begin{enumerate}
 	\item Verteilung der Jobs auf die Produktionsstätten 
 	\item Einplanung der Jobs auf die Maschinen
 \end{enumerate}
 
-Im Distributed Jobs Shop Problem werden zusätzlich zum klassischen Job Shop folgende Annahmen getroffen:
+\noindent
+Im \gls{djs} Problem werden zusätzlich zum klassischen Job Shop folgende Annahmen getroffen:
 
 \begin{itemize}
-	\item Jobs können nicht mehreren Produktionsstätten bearbeitet werden
-	\item Produktionsstätten haben jeweils einen identischen Maschinenpark
+	\item Jobs können nicht auf mehreren Produktionsstätten bearbeitet werden
+	\item Alle Produktionsstätten haben jeweils einen identischen Maschinenpark und können so jeden Auftrag bearbeiten
 \end{itemize}
 
-Die Maschinenbelegungsplanung im Distributed Job Shop kann durch die Adaption von bestehenden Regel-basierten Heuristik oder durch Greedy Heuristiken gelöst werden. Die im Paper \cite{djs-modeling}: \textit{Modeling and heuristics for scheduling of distributed job shops} entwickelten Heuristiken sollen im Folgenden näher erläutert werden.
+\noindent
+Die Maschinenbelegungsplanung im \gls{djs} kann durch die Adaption von bestehenden Regel-basierten Heuristik oder durch Greedy Heuristiken gelöst werden. Die im Paper \cite{djs-modeling}: \textit{Modeling and heuristics for scheduling of distributed job shops} entwickelten Heuristiken sollen im Folgenden näher erläutert werden.
 
 \chapter{Anwendungsbeispiele in der Praxis}
 
-Gerade die Halbleiterindustrie lebt schon seit einigen Jahren im Distributed Job Shop innerhalb eines globalen Produktionsnetzwerkes. Zu beobachten ist, dass viele Halbleiterfertiger gerade in der Frontend Produktion (Aufbringen der Transistoren auf dem Wafer) ein weltweites Produktionsnetzwerk haben. In den verschieden Fabriken werden oft auch identische Produkte gefertigt, um den regionalen Bedarf zu sättigen. \\
+Gerade die Halbleiterindustrie lebt schon seit einigen Jahren im \gls{djs} innerhalb eines globalen Produktionsnetzwerkes. Zu beobachten ist, dass viele Halbleiterfertiger gerade in der Frontend Produktion (Aufbringen der Transistoren auf dem Wafer) über ein weltweites Produktionsnetzwerk verfügen. In den verschieden Fabriken werden oft auch identische Produkte gefertigt, um den regionalen Bedarf zu sättigen. \\
 
+\noindent
 Infineon, beispielsweise, hat 12 Frontend Produktionsstätten weltweit.
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{./settings/infineon}
-	\caption[Produktionsstandorte im Infineon Produktionsnetzwerk]{Produktionsstandorte im Infineon Produktionsnetzwerk\footnote{Eigene Abbildung.}}\label{fig:ifx}
+	\caption[Produktionsstandorte im Infineon Produktionsnetzwerk]{Produktionsstandorte im Infineon Produktionsnetzwerk\footnotemark}\label{fig:ifx}
 \end{figure}
+\footnotetext{Eigene Abbildung}
 
-Jeder Wafer hat dabei ein spezielles Rezept (Operationsreihenfolge) und wird in dieser Reihenfolge auf unterschiedlichen Maschinen bearbeitet. Selbst die Annahme, dass Rüstzeiten aus der Betrachtung ausgeschlossen werden, trifft bei fast allen Prozessen aufgrund einem hohen Automatisierungsgrad zu.
+\noindent
+Jeder Wafer hat dabei ein spezielles Rezept (Operationsreihenfolge) und wird in einer vorgegebenen Reihenfolge auf unterschiedlichen Maschinen bearbeitet. Selbst die Annahme, dass Rüstzeiten aus der Betrachtung ausgeschlossen werden, trifft bei fast allen Prozessen aufgrund einem hohen Automatisierungsgrad zu.
 
 
 \chapter{Mathematische Problemformulierung}
@@ -309,18 +316,21 @@ Jeder Wafer hat dabei ein spezielles Rezept (Operationsreihenfolge) und wird in 
 Bei der mathematischen Formulierung des Distributed Job Shops $DJ_m$ wird folgende Notation nach \cite{pinedo-scheduling} verwendet:
 
 \begin{itemize}
-	\item $n$ — Anzahl an der Jobs $j,k = \{0,1,2,\ldots, n\}$, wobei es sich bei job 0 um einen Dummy Job zur Identifizierung des ersten auf einer Maschine zu prozessierenden Jobs handelt
+	\item $n$ — Anzahl an der Jobs $j,k = \{0,1,2,\ldots, n\}$, wobei es sich bei Job 0 um einen Dummy Job zur Identifizierung des ersten auf einer Maschine zu prozessierenden Jobs handelt
 	\item $m$ — Anzahl der Maschinen $i, l = \{1, 2, \ldots, m\}$
 	\item $f$ — Anzahl der Produktionsstätten $r = \{1, 2, \ldots, f\}$
 	\item $p_{j,i}$ — Porzessierungszeit von Job $j$ auf Maschine $i$
 \end{itemize}
 
+\noindent
 Nach Pinedo sollte das Scheduling Problem durch ein Triplet aus Maschinenumgebung, Prozesscharakteristiken und Zielfunktion beschrieben werden. Im Falle des Distributed Job Shops kann das Problem wie folgt beschrieben werden:
 
 \begin{equation}
 J_{f,m} | | C_{max}
 \end{equation} \\
-Im Gegensatz zum klassischen Job Shop Problem, was durch $J_{m} | | C_{max}$ beschrieben wird, muss im Distributed Job Shop die Produktionsstätte ebenfalls $f$ mit in Betracht gezogen werden.
+
+\noindent
+Im Gegensatz zum klassischen Job Shop Problem, was durch $J_{m} | | C_{max}$ beschrieben wird, muss im Distributed Job Shop die Produktionsstätte $f$ ebenfalls mit in Betracht gezogen werden.
 
 \chapter{Verfahrenslösung}
 \section{Regel-basierte Heuristiken}
@@ -328,6 +338,7 @@ Im Gegensatz zum klassischen Job Shop Problem, was durch $J_{m} | | C_{max}$ bes
 Bei den Regel-basierten Heuristiken wird, wie im ersten Kapitel erklärt, in zwei Schritten vorgegangen. 
 
 \subsection{Aufteilung von Jobs auf Produktionsstätten}
+\label{sec:aufteilung}
 Bei der Aufteilung der Jobs auf die Produktionsstätte werden folgende Aspekte mit in Betracht gezogen:
 
 \begin{itemize}
@@ -336,7 +347,8 @@ Bei der Aufteilung der Jobs auf die Produktionsstätte werden folgende Aspekte m
 	\item Jobs mit gleichen Routen sollten auf verschiedene Produktionsstätten verteilt werden, da sie die Fertigungsdauer erhöhen können durch potenziell erhöhte Standzeiten
 \end{itemize}
 
-Diese Punkte wurden in der entwickelten Formel für die Kalkulation des Arbeitspensums berücksichtigt\footcite[S. 7756]{djs-modeling}:
+\noindent
+Diese Punkte wurden in der entwickelten Formel für die Kalkulation des Arbeitspensums berücksichtigt, welches als Grundlage für Verteilung der Jobs dient\footcite[S. 7756]{djs-modeling}:
 
 \begin{equation}
 \text{Arbeitspensum}(j,i)=\left(\sum_{k \in R_{j,i}} p_{j,k} \right) + p_{j,i} \text{  } \forall_{i j}
@@ -346,14 +358,15 @@ wobei $R_{j,i}$ dem Satz aller der Maschine $i$ vorgeschalteten Maschinen aus Jo
 \begin{figure}[h]
 	\centering
 	\includegraphics[width=\textwidth]{./settings/assignment}
-	\caption[Zuordnung von Aufträgen zu Produktionsstandorten]{Graphische Aufbereitung der Zuordnung von Aufträgen zu Produktionsstandorten\footnote{Eigene Abbildung.}}\label{fig:assignment}
+	\caption[Zuordnung von Aufträgen zu Produktionsstandorten]{Graphische Aufbereitung der Zuordnung von Aufträgen zu Produktionsstandorten\footnotemark}\label{fig:assignment}
 \end{figure}
+\footnotetext{Eigene Abbildung}
 
 \subsection{Einplanung der Aufträge auf Maschinen}
 Mithilfe der bekannten Heuristiken \cgls{spt} und \cgls{lpt} (LPT) werden die den Produktionsstätten zugeordneten Jobs auf den einzelnen Maschinen eingeplant.
 
 \subsection{Anwendungsbeispiel}
-Im folgenden Problem sollen $j=4$ Jobs auf $f=2$ Produktionsstätten verteilt werden mit jeweils $m=3$ Maschinen. In Tabelle \ref{tab:problem} sind die Prozesszeiten der Jobs auf den Maschinen und deren Route angegeben. 
+Im folgenden Problem sollen $j=4$ Jobs auf $f=2$ Produktionsstätten mit jeweils $m=3$ Maschinen verteilt werden. In Tabelle \ref{tab:problem} sind die Prozesszeiten der Jobs auf den Maschinen und deren Route angegeben. 
 
 \begin{table}[H]
 	\centering
@@ -390,6 +403,7 @@ Mithilfe der Formel für Arbeitspensum kann dieses leicht errechnet werden. In d
 	\label{tab:pensum}
 \end{table}
 
+\noindent
 Nach Ermittlung des Arbeitspensums und Ranks kann jetzt mit der Aufteilung der Jobs auf die einzelnen Produktionsstätten begonnen werden.\\
 
 \noindent
@@ -407,10 +421,10 @@ Die in dieser Iteration ermittelten Ergebnisse werden in Tabelle \ref{tab:auftei
 \noindent
 \textbf{Iteration 2 … x}
 \begin{enumerate}
-	\item Ermittlung des nächsten nichtverteilten Jobs nach dem Rank
-	\item Addition vom Arbeitspensum des Jobs zu dem jeweiligen bereits verteilten Arbeitspensum für die Produktionsstätten
-	\item Ermittlung des Maximum des Arbeitspensums
-	\item Verteilung des Jobs auf die Produktionsstätte mit dem minimalen Maximum
+	\item Ermittlung des nächsten nichtverteilten Jobs nach dem ermitteltem Rank.
+	\item Addition vom Arbeitspensum des Jobs zu dem jeweiligen bereits verteilten Arbeitspensum für die Produktionsstätten.
+	\item Ermittlung des Maximum des Arbeitspensums pro Produktionsstätte.
+	\item Verteilung des Jobs auf die Produktionsstätte mit dem minimalen Maximum.
 \end{enumerate}
 
 \begin{table}[H]
@@ -440,15 +454,19 @@ Daraus ergibt sich, dass die Jobs wie folgt auf die Produktionsstätte verteilt 
 	\item Jobs: {4, 2}
 \end{enumerate}
 
-\subsubsection{Einplanung der Aufträge auf Maschinen mittels \cgls{spt} }
-Zuerst Tabelle \ref{tab:spt1} erstellen und für jede Maschine nach der Prozesszeit aufsteigend sortieren.
+\noindent
+Zu Beginn des Kapitels wurde als Merkmal einer guten Jobzuordnung angemerkt, dass Jobs mit identischen Routen in unterschiedlichen Produktionsstätten gefertigt werden sollten. In diesem Beispiel wird sehr schön sichtbar, dass durch das im Paper entwickelte Vorgehen Jobs 1 \& 4 mit identischen Routen unterschiedlichen Produktionsstätten zugeordnet wurden. So kann die Fertigungsdauer minimiert werden.
+
+\subsubsection{Einplanung der Aufträge auf Maschinen mittels \gls{spt} }
+Zuerst wird Tabelle \ref{tab:spt1} erstellt und für jede Maschine nach der Prozesszeit aufsteigend sortiert. \\
 
 \noindent
-\textbf{Iteration 1 … x}
+\textbf{Iteration 1 … x} \\
+\noindent
 Jeweils die erste Zeile pro Maschine betrachten. Sind alle vorhergehenden Operationen abgeschlossen?
 
 \begin{enumerate}
-	\item Ja? Das Maximum aus ( Maximale Endzeit der Maschine, Maximale Endzeit des Jobs )ist die neue Startzeit. Die neue Endzeit ergibt sich aus der neuen Startzeit + Prozesszeit. Fortfahren mit nächster Maschine.
+	\item Ja? Das Maximum aus ( Maximale Endzeit der Maschine, Maximale Endzeit des Jobs ) ist die neue Startzeit. Die neue Endzeit ergibt sich aus der neuen Startzeit + Prozesszeit. Fortfahren mit nächster Maschine.
 	\item Nein? Fortfahren mit nächster Zeile der Maschine.
 \end{enumerate}
 
@@ -469,7 +487,7 @@ Nach Durchführung des ersten Iterationsschrittes ergibt sich Tabelle \ref{tab:s
 		M3 & 3 & 2 & 6 & &\\
 		\bottomrule
 	\end{tabular}
-	\caption{Ergebnis nach der ersten Iteration}
+	\caption{Einplanung von Jobs nach der SPT Regel - Erster Iterationsschritt}
 	\label{tab:spt1}
 \end{table}
 
@@ -490,7 +508,7 @@ Nach Durchführung aller Iterationsschritte ergibt sich Tabelle \ref{tab:spt2}.
 		M3 & 3 & 2 & 6 & 12 & 18\\
 		\bottomrule
 	\end{tabular}
-	\caption{Einplanung der Jobs nach SPT}
+	\caption{Einplanung von Jobs nach der SPT Regel - Ergebnis}
 	\label{tab:spt2}
 \end{table}
 
@@ -503,35 +521,34 @@ In der Präsentation wurde zu Illustrationszwecken unter anderem folgendes inter
 	\caption[Interaktives Beispiel - Einplanung nach der SPT Regel]{Darstellung der nach SPT eingeplanten Operationen im Gantt-Diagramm\footnote{Eigene Abbildung.}}\label{fig:spt}
 \end{figure}
 
-\noindent
-\textbf{Longest Processing Time (LPT)}\\
-\noindent
-Die Schritte für LPT sind identisch zu den von SPT mit der Ausnahme, dass die Tabelle zu Beginn nicht aufsteigend, sondern absteigend sortiert wird. \\
+\subsubsection{Einplanung der Aufträge auf Maschinen mittels \gls{lpt} }
+Die Schritte für \gls{lpt} sind identisch zu den von SPT mit der Ausnahme, dass die Tabelle \ref{tab:spt1} zu Beginn nicht aufsteigend, sondern absteigend sortiert wird. \\
 
 \noindent
 In der Präsentation wurde zu Illustrationszwecken unter anderem folgendes interaktives Beispiel verwendet:
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{./settings/lpt}
-	\caption[Interaktives Beispiel - Einplanung nach der LPT Regel]{Darstellung der nach LPT eingeplanten Operationen im Gant-Diagramm\footnote{Eigene Abbildung.}}\label{fig:spt}
+	\caption[Interaktives Beispiel - Einplanung nach der LPT Regel]{Darstellung der nach LPT eingeplanten Operationen im Gant-Diagramm\footnotemark}\label{fig:spt}
 \end{figure}
+\footnotetext{Eigene Abbildung}
 
 
 \section{Greedy Heuristiken}
 
-Im “Modeling and heuristics for scheduling of distributed job shops” Paper von \cite{djs-modeling} werden weiterhin drei hoch-performante Greedy-Heuristiken eingeführt. Diese Heuristiken beruhen auf dem “insertion neighborhood concept”. D.h. es wird durch kontinuierliches Einsetzen eines Prozessschrittes an verschiedenen Stellen in der Prozesskette die Reihenfolge ermittelt, welche zur kürzesten Fertigungsdauer führt.
+In \cite{djs-modeling}: \textit{Modeling and heuristics for scheduling of distributed job shops} werden weiterhin drei hoch-performante Greedy-Heuristiken eingeführt. Diese Heuristiken beruhen auf dem “insertion neighborhood concept”. D.h. es wird durch kontinuierliches Einsetzen eines Prozessschrittes an verschiedenen Stellen in der Prozesskette die Reihenfolge ermittelt, welche zur kürzesten Fertigungsdauer führt.
 
 \subsection{Greedy-Heuristik 1}
 
 \subsubsection{Allgemeines Vorgehen}
 \noindent
-\textit{Schritt 1.} Zuerst wird, wie im vorherigen Abschnitt eingeführt, die Zuteilung von Jobs auf die einzelnen Produktionsstätten mithilfe der Kenngröße des Arbeitspensums durchgeführt.\\
+\textit{Schritt 1.} Zuerst wird, wie im Abschnitt \ref{sec:aufteilung} eingeführt, die Zuteilung von Jobs auf die einzelnen Produktionsstätten mithilfe der Kenngröße des Arbeitspensums durchgeführt.\\
 
 \noindent
-\textit{Schritt 2.} Für jede Produktionsstätte wird eine zufällige Reihenfolge der Operationen (Operationsfolge) bestimmt, wobei eine spezielle Array-Datenstruktur verwendet wird. Anstatt sowohl Job, Machine und Operationsnummer zu verwenden, wird nur die Jobnummer verwendet welche $m$ Mal wiederholt wird. Durch die Position und die Anzahl der Vorkommnisse der Jobnummer vorher, kann wieder auf Maschine und Operationsnummer zurückgeschlossen werden. Produktionsstätte 1, aus dem vorher vorgestelltem Beispiel, wurde die Jobs $(1, 3)$ zugewiesen, wobei jeder der Jobs auf drei Maschinen bearbeitet wird. Somit ergibt sich, dass beide Jobnummer jeweils drei Mal vorkommen müssen. Die zufällige generierte Reihenfolge der Operationen könnte daher z.B. $[1,3,1,1,3,3]$ lauten. Das würde bedeuten, dass Job $1$ auf Maschine M3 bearbeitet wird, bevor mit der Bearbeitung von Job $3$ auf Maschine M1 begonnen wird.\\
+\textit{Schritt 2.} Für jede Produktionsstätte wird eine zufällige Reihenfolge der Operationen (Operationsfolge) bestimmt, wobei eine spezielle Array-Datenstruktur verwendet wird. Anstatt sowohl Job, Machine und Operationsnummer zu verwenden, wird nur die Jobnummer verwendet welche $m$ Mal wiederholt wird. Durch die Position und die Anzahl der Vorkommnisse der Jobnummer vorher, kann wieder auf Maschine und Operationsnummer zurückgeschlossen werden. Produktionsstätte 1, aus dem vorher vorgestelltem Beispiel, wurden die Jobs $(1, 3)$ zugewiesen, wobei jeder der Jobs auf drei Maschinen bearbeitet wird. Somit ergibt sich, dass beide Jobnummer jeweils drei Mal vorkommen müssen. Die zufällige generierte Reihenfolge der Operationen könnte daher z.B. $[1,3,1,1,3,3]$ lauten. Das würde bedeuten, dass zuerst Job $1$ auf Maschine M3 bearbeitet wird, bevor mit der Bearbeitung von Job $3$ auf Maschine M1 begonnen wird.\\
 
 \noindent
-\textit{Schritt 3.} Für jede Produktionsstätte wird der Länge des Arrays entsprechend viele Iterationen durchgeführt. Der Laufindex $i$ wird für die Iterationszahl eingeführt und es wird die Variable $\text{best\_seq}$ verwendet, in der die beste ermittelte Operationsfolge gespeichert wird. Die Jobindizes werden nacheinander aus der ursprünglichen Operationsfolge genommen und in alle möglichen Positionen in der Operationsfolge getestet. Schließlich wird die beste Position ausgewählt. Die Prozedur wird für den nächsten Job wiederholt.
+\textit{Schritt 3.} Für jede Produktionsstätte wird der Länge des Arrays entsprechend viele Iterationen durchgeführt. Der Laufindex $i$ wird für die Iterationszahl eingeführt und es wird die Variable $\text{best\_seq}$ im Programmcode verwendet, in der die beste ermittelte Operationsfolge gespeichert wird. Die Jobindizes werden nacheinander aus der ursprünglichen Operationsfolge genommen und in alle möglichen Positionen in der Operationsfolge getestet. Schließlich wird die beste Position ausgewählt. Die Prozedur wird für den nächsten Job in der Operationsfolge wiederholt.
 
 \subsubsection{Anwendungsbeispiel}
 \noindent
@@ -546,16 +563,16 @@ Es wird der Job an erster Stelle der Operationsfolge ermittelt — Job 1. Es gib
 \noindent
 \textbf{Iteration 2:}
 \begin{enumerate}
-	\item Ermittle den Jobindex an der zweiten Stelle der originalen Operationsfolge. In unserem Fall wäre dies Job $3$.
-	\item Da $\text{best\_seq}= 1$ entspricht ergeben sich folgende Permutationen: $\{ [1,3], [3,1] \}$. Nehmen wir an, dass Sequenz $[1,3]$ die bessere ist — $\text{best\_seq}$ entspricht nun $[1,3]$.
+	\item Ermittle den Jobindex an der zweiten Stelle der originalen Operationsfolge. Im Beispiel wäre dies Job $3$.
+	\item Da $\text{best\_seq}= 1$ entspricht ergeben sich folgende Permutationen: $\{ [1,3], [3,1] \}$. Angenommen, dass Sequenz $[1,3]$ die bessere ist — $\text{best\_seq}$ entspricht nun $[1,3]$.
 \end{enumerate}
 
 \noindent
 \textbf{Iteration 3:}
 
 \begin{enumerate}
-	\item Ermittle den Jobindex an der dritten Stelle der originalen Operationsfolge. In unserem Fall ist dies Job $1$.
-	\item Da wir bereits im vorherigen Schritt festgestellt haben, dass $[1,3]$ die beste Sequenz war, müssen nicht mehr alle Permutationen getestet werden. Stattdessen müssen nur noch Permutationen getestet werden, die durch einsetzen des Jobindexes an jeder Position der $\text{best\_seq}$ generiert werden. Es ergeben sich daher folgende relevante Permutationen: $\{ [1,1,3], [1,1,3], [1,3,1] \}$.
+	\item Ermittle den Jobindex an der dritten Stelle der originalen Operationsfolge. IIm Beispiel ist dies Job $1$.
+	\item Da bereits im vorherigen Schritt festgestellt wurde, dass $[1,3]$ die beste Sequenz war, müssen nicht mehr alle Permutationen getestet werden. Stattdessen müssen nur noch Permutationen getestet werden, die durch Einsetzen des Jobindexes an jeder Position der $\text{best\_seq}$ generiert werden. Es ergeben sich daher folgende relevante Permutationen: $\{ [1,1,3], [1,1,3], [1,3,1] \}$.
 	\item Es werden wieder die Permutationen getestet und die Beste wird in $\text{best\_seq}$ gespeichert.
 \end{enumerate}
 
@@ -583,7 +600,7 @@ Operationsfolgen werden wie folgt eingeplant und getestet:
 			3   & M1      & 1         & 12          \\
 			\bottomrule
 		\end{tabular}
-		\caption{Operationen in der zu betrachtenden Operationsfolge}
+		\caption{Aus der Operationsfolge extrahierte Informationen}
 		\label{tab:greedyh11}
 	\end{table}
 
@@ -600,7 +617,7 @@ Operationsfolgen werden wie folgt eingeplant und getestet:
 			3   & M1      & 1         & 12          & 0         & 12      \\
 			\bottomrule
 		\end{tabular}
-		\caption{Operationen in der zu betrachtenden Operationsfolge}
+		\caption{Einplanung der Jobs nach der ermittelten Operationsfolge}
 		\label{tab:greedyh12}
 	\end{table}
 	\item Der Maximale Endzeitpunkt entspricht der Fertigungsdauer. Es wird die Sequenz mit der geringsten Fertigungsdauer in jeder Iteration gewählt.
@@ -610,8 +627,9 @@ Im Folgenden findet sich ein Screenshot für das in der Präsentation verwendete
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{./settings/gh1}
-	\caption[Interaktives Beispiel - Einplanung nach der ersten Greedy Heuristik]{Darstellung der nach der ersten Greedy Heuristik eingeplanten Operationen im Gant-Diagramm\footnote{Eigene Abbildung.}}\label{fig:gh1}
+	\caption[Interaktives Beispiel - Einplanung nach der ersten Greedy Heuristik]{Darstellung der nach der ersten Greedy Heuristik eingeplanten Operationen im Gant-Diagramm\footnotemark}\label{fig:gh1}
 \end{figure}
+\footnotetext{Eigene Abbildung}
 
 \subsection{Greedy-Heuristik 2}
 
@@ -621,15 +639,16 @@ Die zweite Heuristik funktioniert ähnlich der ersten Heuristik. Der einzige Unt
 \textit{Schritt 1.} Zuerst wird die Liste der Jobs absteigend nach der Fertigungsdauer sortiert. Die ersten $f$ Jobs werden jeweils einer Produktionsstätte zugeordnet. \\
 
 \noindent
-\textit{Schritt 2.} Die restlichen Jobs werden weiter in der absteigenden Reihenfolge bearbeitet und jeweils der Produktionsstätte mit der niedrigsten gesamten Fertigungsdauer zugeordnet. Es wird nun der dritte Schritt aus der ersten Greedy-Hseuristik angewendet. \\
+\textit{Schritt 2.} Die restlichen Jobs werden weiter in der absteigenden Reihenfolge bearbeitet und jeweils der Produktionsstätte mit der bisher niedrigsten gesamten Fertigungsdauer zugeordnet. Es wird nun der dritte Schritt aus der ersten Greedy-Heuristik angewendet. \\
 
 \noindent
 Im Folgenden findet sich ein Screenshot für das in der Präsentation verwendete interaktive Beispiel:
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{./settings/gh2}
-	\caption[Interaktives Beispiel - Einplanung nach der zweiten Greedy Heuristik]{Darstellung der nach der zweiten Greedy Heuristik eingeplanten Operationen im Gant-Diagramm\footnote{Eigene Abbildung.}}\label{fig:gh2}
+	\caption[Interaktives Beispiel - Einplanung nach der zweiten Greedy Heuristik]{Darstellung der nach der zweiten Greedy Heuristik eingeplanten Operationen im Gant-Diagramm\footnotemark}\label{fig:gh2}
 \end{figure}
+\footnotetext{Eigene Abbildung}
 
 \subsection{Greedy-Heuristik 3}
 Die dritte Heuristik funktioniert ebenfalls ähnlich der ersten Heuristik. Der Unterschied ist, dass alle Permutationen inklusive die Zuordnung zu allen Produktionsstätten in jeder Iteration getestet wird.\\
@@ -645,14 +664,15 @@ Im Folgenden findet sich ein Screenshot für das in der Präsentation verwendete
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{./settings/gh3}
-	\caption[Interaktives Beispiel - Einplanung nach der dritten Greedy Heuristik]{Darstellung der nach der dritten Greedy Heuristik eingeplanten Operationen im Gant-Diagramm\footnote{Eigene Abbildung.}}\label{fig:gh3}
+	\caption[Interaktives Beispiel - Einplanung nach der dritten Greedy Heuristik]{Darstellung der nach der dritten Greedy Heuristik eingeplanten Operationen im Gant-Diagramm\footnotemark}\label{fig:gh3}
 \end{figure}
+\footnotetext{Eigene Abbildung}
 
 %############################# Anhang #################################
 \appendix
 
 \chapter{Programmcodes}
-Der Programmcode, welche im Rahmen dieser Arbeit entwickelt wurde, wurde auf \href{https://git.io/vhTVh}{GitHub} (https://git.io/vhTVh) veröffentlicht und kann unter der MIT License kostenfrei weiter- und wiederverwendet werden.
+Der Programmcode, welche im Rahmen dieser Arbeit entwickelt wurde, wurde auf \href{https://git.io/vhTwq}{GitHub} (https://git.io/vhTwq) veröffentlicht und kann unter der MIT License kostenfrei weiter- und wiederverwendet werden.
 
 
 \clearpage
