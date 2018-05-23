@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  23 MAY 2018 20:37
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2018.4.16)  23 MAY 2018 20:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -3685,28 +3685,28 @@ Package babel Info: Redefining ngerman shorthand "|
 Package babel Info: Redefining ngerman shorthand "~
 (babel)             in language  on input line 654.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 656.
+(babel)             in language  on input line 658.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 656.
+(babel)             in language  on input line 658.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 656.
+(babel)             in language  on input line 658.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 656.
+(babel)             in language  on input line 658.
 [18
 
 ]
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 659.
+(babel)             in language  on input line 661.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 659.
+(babel)             in language  on input line 661.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 665.
+(babel)             in language  on input line 667.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 665.
+(babel)             in language  on input line 667.
 Package babel Info: Redefining ngerman shorthand "|
-(babel)             in language  on input line 665.
+(babel)             in language  on input line 667.
 Package babel Info: Redefining ngerman shorthand "~
-(babel)             in language  on input line 665.
+(babel)             in language  on input line 667.
  [19
 
 
@@ -3717,11 +3717,11 @@ runsystem(makeindex -s bwlimvorlage.ist -t bwlimvorlage.slg -o bwlimvorlage.sls
  bwlimvorlage.slo)...executed safely (allowed).
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 665.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 665.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 667.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 667.
  (./bwlimvorlage.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 665.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 665.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 667.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 667.
 Package rerunfilecheck Info: File `bwlimvorlage.out' has not changed.
 (rerunfilecheck)             Checksum: 1E537B16A2C210CA00B80CBBB556BBEB;1363.
 
@@ -3782,10 +3782,10 @@ blic/lm/lmss12.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lm
 ss9.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmssbx10.pfb>
 </usr/local/texlive/2018/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/loca
 l/texlive/2018/texmf-dist/fonts/type1/public/lm/lmsy8.pfb>
-Output written on bwlimvorlage.pdf (25 pages, 2368922 bytes).
+Output written on bwlimvorlage.pdf (25 pages, 2369271 bytes).
 PDF statistics:
- 442 PDF objects out of 1000 (max. 8388607)
- 366 compressed objects within 4 object streams
+ 443 PDF objects out of 1000 (max. 8388607)
+ 367 compressed objects within 4 object streams
  99 named destinations out of 1000 (max. 500000)
  47370 words of extra memory for PDF output out of 51595 (max. 10000000)
 
